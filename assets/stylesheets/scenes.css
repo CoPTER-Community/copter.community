@@ -1,0 +1,116 @@
+/* Home page scenes: see assets/javascripts/scenes.js. Every animation runs on one
+   16-second loop and only when the visitor hasn't asked for less motion. */
+
+.cps-scene { margin: 1rem 0 0.8rem; aspect-ratio: 680 / 360; }
+.cps-scene:has(svg) { aspect-ratio: auto; }
+.cps-svg { display: block; width: 100%; height: auto; }
+.cps-svg text { font-family: inherit; }
+
+/* Text below each scene: plain columns, each topped with its person's colour */
+.cps-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 0.8rem 1.2rem; margin: 0.6rem 0 1.4rem; }
+.cps-col { border-top: 3px solid var(--c); padding: 0.6rem 0.2rem 0; }
+.cps-col__tag { display: block; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--md-default-fg-color--light); }
+.md-typeset .cps-col h3 { margin: 0.1rem 0 0.3rem; font-size: 0.85rem; font-weight: 700; }
+.md-typeset .cps-col p { margin: 0; font-size: 0.75rem; line-height: 1.55; color: var(--md-default-fg-color--light); }
+
+/* Hidden until their moment; with reduced motion they stay hidden and the cards carry the words */
+.cps-bub, .cps-e-beam, .cps-spark, .cps-trail { opacity: 0; }
+.cps-bub, .cps-bar, .cps-act { transform-box: fill-box; transform-origin: 50% 100%; }
+.cps-tilecol { transform-box: fill-box; }
+.cps-arm { transform: rotate(100deg); }
+
+/* What we do: the tick waits for its moment; at rest the clouds with swapped ideas, full binder and tick all show */
+.cps-w-tick { opacity: 0; }
+.cps-w-pop { transform-box: fill-box; transform-origin: center; }
+.cps-w-think { transform-box: view-box; } /* origin set per cloud in scenes.js, so its idea shrinks with it */
+.cps-still .cps-w-tick { opacity: 1; }
+
+/* At rest: Direction points up at her arrowhead of drones, along a faint trail */
+.cps-still .cps-arm { transform: rotate(-20deg); }
+.cps-still .cps-trail { opacity: 0.6; }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Ethos */
+  .cps-e-bob { animation: cps-e-bob 1.5s ease-in-out infinite; }
+  .cps-e-sway { animation: cps-e-sway 3.6s ease-in-out infinite alternate; }
+  .cps-e-r0 { animation: cps-e-r0 16s infinite; } .cps-e-r1 { animation: cps-e-r1 16s infinite; } .cps-e-r2 { animation: cps-e-r2 16s infinite; }
+  .cps-e-p0 { animation: cps-e-p0 16s infinite; } .cps-e-p1 { animation: cps-e-p1 16s infinite; } .cps-e-p2 { animation: cps-e-p2 16s infinite; }
+  .cps-e-g0 { animation: cps-e-g0 16s infinite; } .cps-e-g1 { animation: cps-e-g1 16s infinite; } .cps-e-g2 { animation: cps-e-g2 16s infinite; }
+  .cps-e-flow { stroke-dasharray: 4 6; animation: cps-flow 0.6s linear infinite; }
+  .cps-e-pk { animation: cps-e-pk 0.9s linear infinite; }
+  .cps-k-e0 { animation: cps-k-e0 16s infinite; } .cps-k-e1 { animation: cps-k-e1 16s infinite; } .cps-k-e2 { animation: cps-k-e2 16s infinite; }
+
+  /* What we do */
+  .cps-w-b0 { animation: cps-w-b0 16s infinite; } .cps-w-b1 { animation: cps-w-b1 16s infinite; }
+  .cps-w-tick { animation: cps-w-tick 16s infinite; }
+  .cps-w-think { animation: cps-w-think 16s infinite; }
+  .cps-w-pop { animation: cps-w-pop 16s infinite; }
+  .cps-k-w0 { animation: cps-k-w0 16s infinite; } .cps-k-w1 { animation: cps-k-w1 16s infinite; }
+
+  /* Strands */
+  .cps-bob { animation: cps-bob 1.3s ease-in-out infinite; }
+  .cps-tilt { animation: cps-tilt 2.6s ease-in-out infinite; }
+  .cps-sway { animation: cps-sway 16s ease-in-out infinite; }
+  .cps-rot { animation: cps-flow 0.4s linear infinite; }
+  .cps-s-b0 { animation: cps-s-b0 16s infinite; } .cps-s-b1 { animation: cps-s-b1 16s infinite; }
+  .cps-s-b2 { animation: cps-s-b2 16s infinite; } .cps-s-b3 { animation: cps-s-b3 16s infinite; }
+  .cps-spark { animation: cps-spark 16s infinite; }
+  .cps-trail { animation: cps-trail 16s infinite; }
+  .cps-tool { animation: cps-tool 16s ease-in-out infinite; }
+  .cps-bar { animation: cps-bar 16s infinite; }
+  .cps-s-a0 { animation: cps-s-a0 16s ease-in-out infinite; }
+  .cps-s-a1 { animation: cps-s-a1 16s ease-in-out infinite; }
+  .cps-s-a2 { animation: cps-s-a2 16s ease-in-out infinite; }
+  .cps-step { animation: cps-step 16s ease-in-out infinite; }
+  .cps-arm { animation: cps-arm 16s ease-in-out infinite; }
+  .cps-swarm { opacity: 0; }
+  .cps-k-s0 { animation: cps-k-s0 16s infinite; } .cps-k-s1 { animation: cps-k-s1 16s infinite; }
+  .cps-k-s2 { animation: cps-k-s2 16s infinite; } .cps-k-s3 { animation: cps-k-s3 16s infinite; }
+}
+
+@keyframes cps-flow { to { stroke-dashoffset: -10; } }
+
+@keyframes cps-e-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes cps-e-sway { from { transform: translateX(-18px); } to { transform: translateX(18px); } }
+@keyframes cps-e-pk { from { transform: translate(0, 0); opacity: 1; } 90% { opacity: 1; } to { transform: translate(var(--dx), var(--dy)); opacity: 0; } }
+@keyframes cps-e-r0 { 0% { transform: translateY(0); } 4%, 29% { transform: translateY(-108px); } 33%, 100% { transform: translateY(0); } }
+@keyframes cps-e-r1 { 0%, 31% { transform: translateY(0); } 35%, 60% { transform: translateY(-108px); } 64%, 100% { transform: translateY(0); } }
+@keyframes cps-e-r2 { 0%, 62% { transform: translateY(0); } 66%, 91% { transform: translateY(-108px); } 95%, 100% { transform: translateY(0); } }
+@keyframes cps-e-p0 { 0% { opacity: 0; transform: scale(.7); } 2.5% { opacity: 1; transform: scale(1.06); } 4% { transform: scale(1); } 29% { opacity: 1; } 32%, 100% { opacity: 0; } }
+@keyframes cps-e-p1 { 0%, 31% { opacity: 0; transform: scale(.7); } 33.5% { opacity: 1; transform: scale(1.06); } 35% { transform: scale(1); } 60% { opacity: 1; } 63%, 100% { opacity: 0; } }
+@keyframes cps-e-p2 { 0%, 62% { opacity: 0; transform: scale(.7); } 64.5% { opacity: 1; transform: scale(1.06); } 66% { transform: scale(1); } 91% { opacity: 1; } 94%, 100% { opacity: 0; } }
+@keyframes cps-e-g0 { 0%, 4.5% { opacity: 0; } 6%, 28% { opacity: 1; } 30%, 100% { opacity: 0; } }
+@keyframes cps-e-g1 { 0%, 35.5% { opacity: 0; } 37%, 59% { opacity: 1; } 61%, 100% { opacity: 0; } }
+@keyframes cps-e-g2 { 0%, 66.5% { opacity: 0; } 68%, 90% { opacity: 1; } 92%, 100% { opacity: 0; } }
+@keyframes cps-k-e0 { 0%, 31% { opacity: 1; } 33%, 93% { opacity: .45; } 95%, 100% { opacity: 1; } }
+@keyframes cps-k-e1 { 0%, 30% { opacity: .45; } 33%, 62% { opacity: 1; } 64%, 93% { opacity: .45; } 95%, 100% { opacity: 1; } }
+@keyframes cps-k-e2 { 0%, 61% { opacity: .45; } 64%, 100% { opacity: 1; } }
+
+@keyframes cps-w-b0 { 0%, 1% { opacity: 0; transform: scale(.7); } 3% { opacity: 1; transform: scale(1.06); } 4.5% { transform: scale(1); } 45% { opacity: 1; } 47%, 100% { opacity: 0; } }
+@keyframes cps-w-b1 { 0%, 49% { opacity: 0; transform: scale(.7); } 51% { opacity: 1; transform: scale(1.06); } 52.5% { transform: scale(1); } 95% { opacity: 1; } 97%, 100% { opacity: 0; } }
+@keyframes cps-w-think { 0%, 47% { opacity: 1; transform: scale(1); } 50%, 96% { opacity: 0; transform: scale(.6); } 98.5% { opacity: 1; transform: scale(1.08); } 100% { opacity: 1; transform: scale(1); } }
+@keyframes cps-w-tick { 0%, 89.9% { opacity: 0; } 90%, 96% { opacity: 1; } 98.5%, 100% { opacity: 0; } }
+@keyframes cps-w-pop { 0%, 90% { transform: scale(.3); } 91.5% { transform: scale(1.25); } 93%, 100% { transform: scale(1); } }
+@keyframes cps-k-w0 { 0%, 47% { opacity: 1; } 50%, 96% { opacity: .45; } 99%, 100% { opacity: 1; } }
+@keyframes cps-k-w1 { 0%, 47% { opacity: .45; } 50%, 96% { opacity: 1; } 99%, 100% { opacity: .45; } }
+
+@keyframes cps-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+@keyframes cps-tilt { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+@keyframes cps-sway { 0%, 31% { transform: translate(0, 0); } 35% { transform: translate(-22px, -6px); } 39% { transform: translate(22px, -10px); } 43% { transform: translate(-14px, -5px); } 46%, 100% { transform: translate(0, 0); } }
+@keyframes cps-s-b0 { 0%, 1% { opacity: 0; transform: scale(.7); } 3% { opacity: 1; transform: scale(1.06); } 4.5% { transform: scale(1); } 20% { opacity: 1; } 22%, 100% { opacity: 0; } }
+@keyframes cps-s-b1 { 0%, 29% { opacity: 0; transform: scale(.7); } 31% { opacity: 1; transform: scale(1.06); } 32.5% { transform: scale(1); } 45% { opacity: 1; } 47%, 100% { opacity: 0; } }
+@keyframes cps-s-b2 { 0%, 54% { opacity: 0; transform: scale(.7); } 56% { opacity: 1; transform: scale(1.06); } 57.5% { transform: scale(1); } 70% { opacity: 1; } 72%, 100% { opacity: 0; } }
+@keyframes cps-s-b3 { 0%, 78% { opacity: 0; transform: scale(.7); } 80% { opacity: 1; transform: scale(1.06); } 81.5% { transform: scale(1); } 90% { opacity: 1; } 92%, 100% { opacity: 0; } }
+@keyframes cps-spark { 0%, 3% { opacity: 0; } 4% { opacity: 1; } 5.5% { opacity: 0; } 8% { opacity: 1; } 9.5% { opacity: 0; } 12% { opacity: 1; } 13.5% { opacity: 0; } 16% { opacity: 1; } 17.5%, 100% { opacity: 0; } }
+@keyframes cps-tool { 0%, 3% { transform: rotate(0); } 5% { transform: rotate(-12deg); } 7.5% { transform: rotate(8deg); } 10% { transform: rotate(-12deg); } 12.5% { transform: rotate(8deg); } 15% { transform: rotate(-8deg); } 17%, 100% { transform: rotate(0); } }
+@keyframes cps-bar { 0%, 55% { transform: scaleY(.12); } 60%, 71% { transform: scaleY(1); } 75%, 100% { transform: scaleY(.12); } }
+@keyframes cps-s-a0 { 0%, 2% { transform: rotate(0); } 4% { transform: rotate(5deg); } 8% { transform: rotate(2deg); } 12% { transform: rotate(5deg); } 16% { transform: rotate(2deg); } 19%, 100% { transform: rotate(0); } }
+@keyframes cps-s-a1 { 0%, 30% { transform: translateX(0) rotate(0); } 35% { transform: translateX(-5px) rotate(-3deg); } 39% { transform: translateX(5px) rotate(3deg); } 43% { transform: translateX(-3px) rotate(-2deg); } 46%, 100% { transform: translateX(0) rotate(0); } }
+@keyframes cps-s-a2 { 0%, 55% { transform: translateY(0) rotate(0); } 57% { transform: translateY(-5px); } 59% { transform: translateY(0); } 61% { transform: translateY(-5px); } 63% { transform: translateY(0); } 66%, 69% { transform: rotate(4deg); } 72%, 100% { transform: translateY(0) rotate(0); } }
+@keyframes cps-step { 0%, 79% { transform: translateX(0); } 82%, 90% { transform: translateX(8px); } 94%, 100% { transform: translateX(0); } }
+@keyframes cps-arm { 0%, 77% { transform: rotate(100deg); } 79.5% { transform: rotate(-70deg); } 81% { transform: rotate(-30deg); } 82.5% { transform: rotate(-70deg); } 84% { transform: rotate(-30deg); } 85.5% { transform: rotate(-65deg); } 87.5% { transform: rotate(38deg); } 88.3% { transform: rotate(30deg); } 91.5% { transform: rotate(35deg); } 95%, 100% { transform: rotate(100deg); } }
+@keyframes cps-trail { 0%, 86% { opacity: 0; } 88%, 91% { opacity: 1; } 94%, 100% { opacity: 0; } }
+@keyframes cps-k-s0 { 0%, 22% { opacity: 1; } 25%, 96% { opacity: .45; } 99%, 100% { opacity: 1; } }
+@keyframes cps-k-s1 { 0%, 26% { opacity: .45; } 29%, 47% { opacity: 1; } 50%, 100% { opacity: .45; } }
+@keyframes cps-k-s2 { 0%, 51% { opacity: .45; } 54%, 72% { opacity: 1; } 75%, 100% { opacity: .45; } }
+@keyframes cps-k-s3 { 0%, 76% { opacity: .45; } 79%, 93% { opacity: 1; } 96%, 100% { opacity: .45; } }

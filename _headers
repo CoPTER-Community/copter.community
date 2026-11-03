@@ -1,0 +1,6 @@
+# Cloudflare Pages response headers. Fonts and terrain layers rarely change,
+# so let browsers cache them for a long time.
+/assets/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+/assets/terrain/*
+  Cache-Control: public, max-age=604800
